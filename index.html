@@ -98,7 +98,7 @@
         const isOnline = navigator.onLine;
         statusPill.classList.toggle('offline', !isOnline);
         statusDot.classList.toggle('offline', !isOnline);
-        onlineStatus.textContent = navigator.onLine
+        onlineStatus.textContent = isOnline
           ? 'You are online — all systems glowing ✨'
           : 'You appear to be offline right now';
       }
