@@ -56,6 +56,15 @@
         animation: pulse 1.6s infinite;
       }
 
+      .dot.offline {
+        background: #f97316;
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7);
+      }
+
+      .status-pill.offline {
+        background: rgba(249, 115, 22, 0.18);
+      }
+
       @keyframes pulse {
         0% {
           box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
@@ -72,16 +81,23 @@
   <body>
     <main class="card">
       <h1>Live Connection</h1>
-      <p class="status-pill">
-        <span class="dot" aria-hidden="true"></span>
-        <strong id="online-status">Checking your connection...</strong>
+      <p class="status-pill" id="status-pill">
+        <span class="dot" id="status-dot" aria-hidden="true"></span>
+        <strong id="online-status" aria-live="polite">
+          Checking your connection...
+        </strong>
       </p>
     </main>
 
     <script>
       const onlineStatus = document.getElementById('online-status');
+      const statusPill = document.getElementById('status-pill');
+      const statusDot = document.getElementById('status-dot');
 
       function renderOnlineStatus() {
+        const isOnline = navigator.onLine;
+        statusPill.classList.toggle('offline', !isOnline);
+        statusDot.classList.toggle('offline', !isOnline);
         onlineStatus.textContent = navigator.onLine
           ? 'You are online — all systems glowing ✨'
           : 'You appear to be offline right now';
