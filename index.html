@@ -83,9 +83,12 @@
       <h1>Live Connection</h1>
       <p class="status-pill" id="status-pill">
         <span class="dot" id="status-dot" aria-hidden="true"></span>
-        <strong id="online-status" aria-live="polite">
-          Checking your connection...
-        </strong>
+        <strong
+          id="online-status"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></strong>
       </p>
     </main>
 
